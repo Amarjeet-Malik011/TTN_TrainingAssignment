@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>form</title>
+    <style>
+    .main{
+        margin-left:100px;
+        margin-right: 100px;
+    }
+    .nav-ul{
+        list-style-type: none;
+        float: right;
+    }
+    .nav-ul li
+    {
+        float: left;
+        padding: 10px;
+    }
+    hr{
+        color: #e0e2e6;
+        margin-top: 10px;
+    }
+     .form1{
+         border: 3px solid gray;
+         border-radius: 5px;
+         margin-left: 25%;
+         margin-right: 25%;
+         margin-top: 10px;
+         margin-bottom: 10px;
+     }
+     .form-heading{
+         background-color: #bbc0ca;
+         color: white;
+         padding-top: 5px;
+         padding-left: 20px;
+         padding-right: 20px;
+         padding-bottom: 5px;
+     }
+    .form-footer{
+        background-color: #edeef1;
+        color: lavender;
+        padding-top: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 10px;
+    }
+     .input-button{
+         float: right;
+         height: 40px;
+         width: 70px;
+         background-color: #00c79c;
+         border-radius: 10px;
+         border: none;
+         color: white;
+     }
+     .form-div{
+         margin-left: 20px;
+         margin-right: 20px;
+         margin-top: 10px;
+         margin-bottom: 10px;
+     }
+    label{
+        color: #797979;
+    }
+    select{
+        background-color: #00c79c;
+        color: white;
+        border-radius: 5px;
+    }
+    select option{
+        color: white;
+        background-color: #00c79c;
+    }
+    </style>
+</head>
+<body>
+<div class="main">
+    <div style="color: #1F9799;overflow: hidden">
+        <div>
+            <h2 style="float: left">TO THE NEW</h2>
+        </div>
+        <div>
+            <ul class="nav-ul">
+                <li><a>Home</a></li>
+                <li><a>Quick Help</a></li>
+            </ul>
+        </div>
+    </div>
+    <hr>
+    <div>
+        <form class="form1">
+            <div class="form-heading"><h2>Bug Report</h2></div>
+            <div>
+                <div class="form-div">
+                    <label>Title:*</label>
+                    <br>
+                    <input type="text" style="width: 96%" required/>
+                    <label>Description:*</label>
+                    <br>
+                    <textarea style="width: 98%;border-radius: 3px;border: 1px solid gray" required></textarea>
+                    <label>Operating System:</label>
+                    <br>
+                    <select name="Operating System" style="width: 99%">
+                        <option value="Windows Xp">Windows Xp</option>
+                        <option value="Linux">Linux</option>
+                        <option value="Mac">Mac</option>
+                    </select>
+                    <label>Product:*</label>
+                    <br>
+                    <select name="Product" style="width: 99%" required>
+                        <option value="Formoid">Formoid</option>
+                        <option value="sample2">sample2</option>
+                        <option value="sampl3">sample3</option>
+                    </select>
+                    <label>Version:*</label>
+                    <br>
+                    <input type="text" style="width: 20%" required/>
+                    <br>
+                    <label>Liscense:</label>
+                    <br>
+                        <input type="radio"  name="1" value="Free" checked>Free
+                        <input type="radio" style="margin-left: 35%" name="1" value="Business"> Business
+                    <select name="Severity" style="width: 99%">
+                        <option value="Critical">Critical</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+                    </select>
+                    <label>Attachments:</label>
+                    <br>
+                    <input type="file" name="attach" accept="/*" style="width: 100%  " value="choose file">
+
+                </div>
+            </div>
+            <div>
+                <div class="form-footer" style="overflow: hidden">
+                    <input type="submit" class="input-button" value="Send"/>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
