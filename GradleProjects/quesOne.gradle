@@ -1,0 +1,14 @@
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java/com/intelligrape/gradle']
+        }
+    }
+}
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Exercises',
+                'Implementation-Version': '1.0',
+                'Main-Class': 'Application'
+    }
+}

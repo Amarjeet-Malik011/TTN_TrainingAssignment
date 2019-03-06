@@ -1,0 +1,14 @@
+sourceSets {
+    main{
+        resources{
+            srcDirs= ['src/main/resources']
+            exclude 'file1.txt'
+        }
+    }
+}
+jar{
+    manifest{
+        attributes 'Implementation-Title': 'Gradle-Exercise3',
+                'Implementation-version': '1.0'
+    }
+}

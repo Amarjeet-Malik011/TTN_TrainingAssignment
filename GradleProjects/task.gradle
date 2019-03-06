@@ -1,0 +1,6 @@
+task task1{
+    println "task1"
+} 
+task task2{
+    println "task2"
+}

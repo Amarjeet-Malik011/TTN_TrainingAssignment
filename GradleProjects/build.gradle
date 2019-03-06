@@ -1,0 +1,39 @@
+apply plugin:'java'
+//apply from: 'quesOne.gradle'
+//apply from: 'quesTwo.gradle'
+//apply from: 'quesThree.gradle'
+//apply from: 'mytasks.gradle'
+version= '1.0'
+
+
+repositories {
+    mavenCentral()
+}
+dependencies{
+    compile 'org.hibernate:hibernate-core:3.6.7.Final'
+    compile 'org.apache.commons:commons-lang3:3.6'
+}
+sourceSets{
+    main{
+        java{
+            srcDirs= ['src/main/java/com/intelligrape/gradle']
+        }
+    }
+}
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Exercises',
+                'Implementation-Version': '1.0',
+                'Main-Class': 'Application'
+    }
+}
+task uberjar(type: Jar){
+    manifest{
+        attributes 'Main-Class': 'Application'
+    }
+    baseName= 'executeable-fat-jar'
+    from{
+        configurations.compile.collect{ it.isDirectory() ? it : zipTree(it)}
+    }
+    with jar
+}

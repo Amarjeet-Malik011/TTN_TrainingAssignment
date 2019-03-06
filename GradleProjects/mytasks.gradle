@@ -1,0 +1,3 @@
+task sample {
+    println "sample task executed"
+}
