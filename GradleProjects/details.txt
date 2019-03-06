@@ -1,0 +1,117 @@
+1) Look up java plugin documentation. Make changes in manifest to make it executable with correct class. When run using java -jar JAR_NAME_HERE the output should be text "Hello World" on the console. 
+
+Ans.
+
+java plugin documentation: ​ https://docs.gradle.org/current/userguide/java_plugin.html
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java/com/intelligrape/gradle']
+        }
+    }
+}
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Exercises',
+                'Implementation-Version': '1.0',
+                'Main-Class': 'Application'
+    }
+}
+
+
+2) look up idea plugin. make changes in build.gradle so that the sources of src/main/java as well as src/main/java2 are taken as sources. Ensure that when you make JAR file class files in both are added to the JAR. This will teach you how projects with non-conventional structure can be used with gradle.
+
+Ans. 
+
+IDEA plugin documentation; ​ https://docs.gradle.org/current/userguide/idea_plugin.html
+
+sourceSets {
+    main{
+        java{
+            srcDirs = ['src/main/java', 'src/main/java2']
+        }
+    }
+}
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Exercises',
+                'Implementation-Version': '1.0',
+                'Main-Class': 'Child'
+    }
+}
+
+3) add 2 files file1.xml and file1.txt in src/main/resources manually. make changes so that when creating jar only file1.xml is added to the jar. 
+
+Ans.
+
+sourceSets {
+    main{
+        resources{
+            srcDirs= ['src/main/resources']
+            exclude 'file1.txt'
+        }
+    }
+}
+jar{
+    manifest{
+        attributes 'Implementation-Title': 'Gradle-Exercise3',
+                'Implementation-version': '1.0'
+    }
+}
+
+
+4) find how to what is an uberjar. Make changes so you can use commons lang3 StringUtil in your jar. Make this uber jar executable. The output should be text but that should be using the StringUtils class of commons lang3
+
+Ans.
+
+Fat/uber jar: ​ https://www.baeldung.com/gradle-fat-jar
+
+dependencies{
+    compile 'org.apache.commons:commons-lang3:3.6'
+}
+sourceSets{
+    main{
+        java{
+            srcDirs= ['src/main/java/com/intelligrape/gradle']
+        }
+    }
+}
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Exercises',
+                'Implementation-Version': '1.0',
+                'Main-Class': 'Application'
+    }
+}
+task uberjar(type: Jar){
+    manifest{
+        attributes 'Main-Class': 'Application'
+    }
+    baseName= 'executeable-fat-jar'
+    from{
+        configurations.compile.collect{ it.isDirectory() ? it : zipTree(it)}
+    }
+    with jar
+}
+
+5) Find a maven repository and add it as a repository. You can use bintray, jcenter
+
+Ans.
+
+repositories {
+    mavenCentral()
+}
+dependencies{
+    compile 'org.hibernate:hibernate-core:3.6.7.Final'
+}
+
+
+6) Write a task in file "mytasks.gradle" and use it in your build.gradle
+
+Ans.
+
+apply from: 'mytasks.gradle'
+task sample {
+    println "sample task executed"
+}
